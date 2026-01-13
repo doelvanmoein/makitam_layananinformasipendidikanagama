@@ -3,7 +3,7 @@
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class="<?= (!empty($active_menu) && $active_menu=='dashboard' ) ? 'active' : 'nav-item' ?>"><a href="<?= base_url() ?>"><i class="icon-grid"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
         </li>
-        <li class="<?= (!empty($active_menu) && $active_menu=='news' ) ? 'active' : 'nav-item' ?>"><a href="<?= base_url('home/news') ?>"><i class="icon-layers"></i><span class="menu-title" data-i18n="">Berita</span></a>
+        <li class="<?= (!empty($active_menu) && $active_menu=='news' ) ? 'active' : 'nav-item' ?>"><a href="<?= base_url('news') ?>"><i class="icon-layers"></i><span class="menu-title" data-i18n="">Berita</span></a>
         </li>
         <!-- <li class="<?= (!empty($active_menu) && $active_menu=='statistic') ? 'active' : 'nav-item' ?>"><a href="<?= base_url('home/statistic') ?>"><i class="icon-graph"></i><span class="menu-title" data-i18n="">Statistik</span></a>
         </li> -->

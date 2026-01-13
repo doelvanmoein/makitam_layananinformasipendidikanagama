@@ -695,4 +695,15 @@ class Model extends CI_Model {
                         ->row();
     }
 
+    public function getPontrenList($limit, $start)
+    {
+        $this->db->select('*');
+        $this->db->where('madrasah_is_pontren', 1);
+        $this->db->from('t_madrasah');
+        
+        $this->db->limit($limit, $start);
+        $result= $this->db->get()->result_array();
+        return $result;
+    }
+
 }

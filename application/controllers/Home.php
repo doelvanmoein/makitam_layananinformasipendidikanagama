@@ -75,6 +75,34 @@ class Home extends CI_Controller {
 		$this->load->view('patch/footer');
 	}
 
+	public function pontren() {
+		$data = array();
+
+		$data['active_menu'] = 'data';
+		$data['arr_religion'] = array('Islam', 'Kristen Protestan', 'Kristen Katolik', 'Hindu', 'Budha', 'Kongkhucu');
+		$data['arr_worshiphouse_type'] = array('Masjid', 'Musholla', 'Gereja', 'Pura', 'Vihara', 'Klenteng/Litang');
+
+		// config
+		$this->db->from('t_madrasah');
+		$this->db->where('madrasah_is_pontren', 1);
+		$this->db->order_by("madrasah_name");
+		$config['base_url'] = base_url('Home/pontren');
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 5;
+		$data['start'] = $this->uri->segment(3);
+		$data['pontrenList'] = $this->Model->getPontrenList($config['per_page'], $data['start']);
+
+		// var_dump($data['madrasahList']);
+
+		// initialize
+		$this->pagination->initialize($config);
+
+		$this->load->view('patch/header');
+		$this->load->view('patch/menu', $data);
+		$this->load->view('pontren');
+		$this->load->view('patch/footer');
+	}
+
 	public function detail() 
 	{
 		$post = $this->uri->segment(3);
