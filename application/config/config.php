@@ -548,7 +548,8 @@ $config['mail']['charset'] = 'iso-8859-1';
 
 # config url
 $config['doc_root'] = $_SERVER['DOCUMENT_ROOT'];
-$config['file_path'] = '/_kemenag_sawahlunto/SistemPelaporanLKB/v1/';
-$config['url'] = 'http://localhost/_kemenag_sawahlunto/SistemPelaporanLKB/v1/';
+$config['file_path'] = '/_kemenag_sawahlunto/NEW_GIT_REPO/LayananInformasiPendidikanAgama/';
+$config['url'] = 'http://localhost/_kemenag_sawahlunto/NEW_GIT_REPO/LayananInformasiPendidikanAgama/';
 $config['path_document'] = 'uploads/';
 $config['path_photo'] = 'uploads/pp_users/';
+$config['path_news_image'] = 'uploads/';

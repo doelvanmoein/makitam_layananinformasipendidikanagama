@@ -671,6 +671,14 @@ class Model extends CI_Model {
             'berita_status' => 'Publish'
         ])->row();
     }
+
+    public function get_berita_by_id($id)
+    {
+        return $this->db->get_where('t_berita', [
+            'berita_id' => $id,
+            'berita_status' => 'Publish'
+        ])->row();
+    }
     
     public function count_berita_test()
     {

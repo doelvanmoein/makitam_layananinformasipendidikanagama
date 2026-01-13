@@ -57,6 +57,8 @@ class News extends CI_Controller {
 		$data['start'] = $this->uri->segment(3);
 		$data['berita'] = $this->Model->get_all_berita($config['per_page'], $data['start']);
 
+        $data['path_image'] = $this->config->item('url').$this->config->item('path_news_image');
+
 		// var_dump($data['worshiphouseList']);
 
 		// initialize
@@ -83,14 +85,34 @@ class News extends CI_Controller {
 		$this->load->view('patch/footer');
     }
 
-    public function detail($slug)
+    public function detail()
     {
-        $data['berita'] = $this->Model->get_berita_by_slug($slug);
 
-        if (!$data['berita']) {
-            show_404();
-        }
+        $post = $this->uri->segment(3);
+        // var_dump($post); die;
+        $data['berita'] = $this->Model->get_berita_by_id($post);
 
-        $this->load->view('berita/detail', $data);
+        $data['badge_classification'] = [
+            'Pengumuman' => 'badge-warning',
+            'Kegiatan'   => 'badge-info',
+            'Layanan'    => 'badge-success',
+            'Informasi'  => 'badge-primary',
+            // 'Agenda'     => 'badge-warning'
+        ];
+
+        $data['path_image'] = $this->config->item('url').$this->config->item('path_news_image');
+
+    //     if (!$data['berita']) {
+    //         show_404();
+    //     }
+
+        // $this->load->view('berita/detail', $data);
+
+        // echo "<pre>"; print_r($data); echo "</pre>";
+
+        $this->load->view('patch/header');
+		$this->load->view('patch/menu', $data);
+		$this->load->view('news_detail');
+		$this->load->view('patch/footer');
     }
 }

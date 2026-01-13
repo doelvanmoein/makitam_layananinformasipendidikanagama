@@ -39,7 +39,7 @@
         <div class="card mb-4">
             <div class="row no-gutters">
                 <div class="col-md-5">
-                    <img src="<?= $unggulan->berita_image ?>"
+                    <img src="<?= $path_image.$unggulan->berita_image ?>"
                         class="img-fluid h-100"
                         style="object-fit:cover;">
                 </div>
@@ -53,7 +53,7 @@
                         <p>
                             <?= character_limiter($unggulan->berita_summary, 150) ?>
                         </p>
-                        <a href="<?= site_url('berita/detail/'.$unggulan->berita_slug) ?>"
+                        <a href="<?= site_url('news/detail/'.$unggulan->berita_id) ?>"
                         class="btn btn-primary btn-sm">
                             Baca Selengkapnya
                         </a>
@@ -72,7 +72,7 @@
                     <?= $row->berita_classification ?>
                 </span>
 
-                <img src="<?= $row->berita_image ?>"
+                <img src="<?= $path_image.$row->berita_image ?>"
                      class="card-img-top news-thumb">
 
                 <div class="card-body">
@@ -88,7 +88,7 @@
                         <?= character_limiter($row->berita_summary, 20) ?>
                     </p>
 
-                    <a href="<?= site_url('berita/detail/'.$row->berita_slug) ?>"
+                    <a href="<?= site_url('news/detail/'.$row->berita_id) ?>"
                        class="btn btn-outline-primary btn-sm">
                         Detail
                     </a>
