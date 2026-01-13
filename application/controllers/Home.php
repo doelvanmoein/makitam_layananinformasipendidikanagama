@@ -103,6 +103,62 @@ class Home extends CI_Controller {
 		$this->load->view('patch/footer');
 	}
 
+	public function tpa() {
+		$data = array();
+
+		$data['active_menu'] = 'data';
+		$data['arr_religion'] = array('Islam', 'Kristen Protestan', 'Kristen Katolik', 'Hindu', 'Budha', 'Kongkhucu');
+		$data['arr_worshiphouse_type'] = array('Masjid', 'Musholla', 'Gereja', 'Pura', 'Vihara', 'Klenteng/Litang');
+
+		// config
+		$this->db->from('t_madrasah');
+		$this->db->where('madrasah_is_tpa', 1);
+		$this->db->order_by("madrasah_name");
+		$config['base_url'] = base_url('Home/tpa');
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 5;
+		$data['start'] = $this->uri->segment(3);
+		$data['tpaList'] = $this->Model->getTpaList($config['per_page'], $data['start']);
+
+		// var_dump($data['madrasahList']);
+
+		// initialize
+		$this->pagination->initialize($config);
+
+		$this->load->view('patch/header');
+		$this->load->view('patch/menu', $data);
+		$this->load->view('tpa');
+		$this->load->view('patch/footer');
+	}
+
+	public function diniyah() {
+		$data = array();
+
+		$data['active_menu'] = 'data';
+		$data['arr_religion'] = array('Islam', 'Kristen Protestan', 'Kristen Katolik', 'Hindu', 'Budha', 'Kongkhucu');
+		$data['arr_worshiphouse_type'] = array('Masjid', 'Musholla', 'Gereja', 'Pura', 'Vihara', 'Klenteng/Litang');
+
+		// config
+		$this->db->from('t_madrasah');
+		$this->db->where('madrasah_is_pd', 1);
+		$this->db->order_by("madrasah_name");
+		$config['base_url'] = base_url('Home/tpa');
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 5;
+		$data['start'] = $this->uri->segment(3);
+		$data['diniyahList'] = $this->Model->getDiniyahList($config['per_page'], $data['start']);
+
+		// var_dump($data['madrasahList']);
+
+		// initialize
+		$this->pagination->initialize($config);
+
+		$this->load->view('patch/header');
+		$this->load->view('patch/menu', $data);
+		$this->load->view('diniyah');
+		$this->load->view('patch/footer');
+	}
+
 	public function detail() 
 	{
 		$post = $this->uri->segment(3);

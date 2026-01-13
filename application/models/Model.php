@@ -706,4 +706,26 @@ class Model extends CI_Model {
         return $result;
     }
 
+    public function getTpaList($limit, $start)
+    {
+        $this->db->select('*');
+        $this->db->where('madrasah_is_tpa', 1);
+        $this->db->from('t_madrasah');
+        
+        $this->db->limit($limit, $start);
+        $result= $this->db->get()->result_array();
+        return $result;
+    }
+
+    public function getDiniyahList($limit, $start)
+    {
+        $this->db->select('*');
+        $this->db->where('madrasah_is_pd', 1);
+        $this->db->from('t_madrasah');
+        
+        $this->db->limit($limit, $start);
+        $result= $this->db->get()->result_array();
+        return $result;
+    }
+
 }
